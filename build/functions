@@ -34,7 +34,7 @@ set -e
 # not nested call check
 if [ ${src} != ${dir} ]; then
     echo -n "Copying tree ${src}/ to ${dir}/ "
-    rsync -a --delete --numeric-ids ${src}/ ${dir}/
+    rsync -v -a --delete --numeric-ids ${src}/ ${dir}/
     echo ": done"
 fi
 
