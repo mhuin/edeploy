@@ -365,7 +365,7 @@ mount_fs() {
 
     # Let's create a copy of the current /dev
     mkdir -p ${dir}/dev/pts
-    rsync -v -a --delete-before --exclude=shm /dev/ ${dir}/dev/
+    rsync -a --delete-before --exclude=shm /dev/ ${dir}/dev/
 
     # If we run with an ISO as loopback, we need to mount it
     if [ ! -z $ISO_PATH ]; then
