@@ -40,7 +40,7 @@ function update_metadata() {
     if [ ! -d ${EDEPLOY_DIR} ]; then
         mkdir -p ${EDEPLOY_DIR}
     fi
-    rsync -v -a rsync://${RSERV}:${RSERV_PORT}/metadata/${VERS}/${ROLE}/${TARGET}/ ${EDEPLOY_DIR}/${ROLE_TO_UPDATE}/
+    rsync -a rsync://${RSERV}:${RSERV_PORT}/metadata/${VERS}/${ROLE}/${TARGET}/ ${EDEPLOY_DIR}/${ROLE_TO_UPDATE}/
 }
 
 function upgrade() {
@@ -106,7 +106,7 @@ function upgrade() {
 }
 
 function list() {
-    rsync -v rsync://${RSERV}:${RSERV_PORT}/metadata/${VERS}/${ROLE}/ 2> /dev/null > tempfile
+    rsync rsync://${RSERV}:${RSERV_PORT}/metadata/${VERS}/${ROLE}/ 2> /dev/null > tempfile
     if [ "$?" != "0" ]; then
         echo "No upgrade found for role '$ROLE' version $VERS on server $RSERV"
         exit 1
