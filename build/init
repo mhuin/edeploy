@@ -246,7 +246,7 @@ if /configure; then
             curl -s -S http://${HSERV}:${HSERV_PORT}/${HPATH}/${VERS}/${ROLE}-${VERS}.edeploy | gzip -d | tar x -C $d || give_up "Unable to download http://${HSERV}:${HSERV_PORT}/${HPATH}/${VERS}/${ROLE}-${VERS}.edeploy"
         else
             log "Copying files from rsync://${RSERV}:${RSERV_PORT}/${RPATH}/${VERS}/${ROLE}..."
-            rsync -a rsync://${RSERV}:${RSERV_PORT}/${RPATH}/${VERS}/${ROLE}/ $d/ || give_up "Unable to rsync rsync://${RSERV}:${RSERV_PORT}/${RPATH}/${VERS}/${ROLE}/"
+            rsync -v -a rsync://${RSERV}:${RSERV_PORT}/${RPATH}/${VERS}/${ROLE}/ $d/ || give_up "Unable to rsync rsync://${RSERV}:${RSERV_PORT}/${RPATH}/${VERS}/${ROLE}/"
         fi
         echo "SERV=${SERV}" >> $d/var/lib/edeploy/conf
         echo "RSERV=${RSERV}" >> $d/var/lib/edeploy/conf

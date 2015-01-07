@@ -220,7 +220,7 @@ trap do_cleanup 0
 # Copy the data
 
 if [ -d "$DIR" ]; then
-    rsync -a "$DIR/" "$MDIR/"
+    rsync -v -a "$DIR/" "$MDIR/"
 else
     tar xf "$DIR" -C "$MDIR"
 fi
@@ -257,7 +257,7 @@ fi
 
 # Let's create a copy of the current /dev
 mkdir -p "${MDIR}/"/dev/pts
-rsync -a --delete-before --exclude=shm /dev/ ${MDIR}/dev/
+rsync -v -a --delete-before --exclude=shm /dev/ ${MDIR}/dev/
 
 # Mount /proc
 mount -t proc none "$MDIR/"proc
